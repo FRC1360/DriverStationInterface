@@ -8,49 +8,91 @@
     <SolidColorBrush x:Key="MajorForegroundBrush" Color="LightGray"/>
     <SolidColorBrush x:Key="MinorForegroundBrush" Color="Gray"/>
     <SolidColorBrush x:Key="MajorBackgroundBrush" Color="#333"/>
+    <SolidColorBrush x:Key="MinorBackgroundBrush" Color="#444"/>
     <Style TargetType="local:MainWindow">
         <Setter Property="WindowState" Value="Maximized"/>
         <Setter Property="Background" Value="{StaticResource MajorBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="Blue"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="1"/>
-        <Setter Property="WindowChrome.CaptionHeight" Value="{StaticResource TitleBarSize}"/>
+        <Setter Property="WindowChrome.CaptionHeight" Value="0"/>
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
-                <WindowChrome CaptionHeight="{StaticResource TitleBarSize}" CornerRadius="0" ResizeBorderThickness="2" UseAeroCaptionButtons="False" NonClientFrameEdges="None"/>
+                <WindowChrome CaptionHeight="32" CornerRadius="0" ResizeBorderThickness="2" UseAeroCaptionButtons="False" NonClientFrameEdges="Top" GlassFrameThickness="0,24,0,0"/>
             </Setter.Value>
         </Setter>
     </Style>
     <Style x:Key="ButtonMinimize" TargetType="Button">
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="root">
+                    <Grid x:Name="root" Background="{StaticResource MajorBackgroundBrush}">
                         <Rectangle Fill="{StaticResource MajorForegroundBrush}" Margin="6,16,6,4"/>
-                    </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="root" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="root" Property="Background" Value="{StaticResource MinorBackgroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
     <Style x:Key="ButtonMaximize" TargetType="Button">
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid x:Name="root">
+                    <Grid x:Name="root" Background="{StaticResource MajorBackgroundBrush}">
                         <Path Width="24" Height="24" Data="M 4,6 L 4,18 L 20,18 L 20,6" StrokeThickness="1" Stroke="{StaticResource MajorForegroundBrush}"/>
                         <Rectangle Margin="4,6,4,14" Fill="{StaticResource MajorForegroundBrush}"/>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="root" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="root" Property="Background" Value="{StaticResource MinorBackgroundBrush}"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=local:MainWindow}}" Value="Maximized">
+                            <Setter TargetName="root" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonRestore" TargetType="Button">
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="root" Background="{StaticResource MajorBackgroundBrush}">
+                        <Path Width="24" Height="24" Data="M 4,6 L 4,14 L 16,14 L 16,6 L 4,6 M 8,10 L 8,18 L 20,18 L 20,10 L 8,10" StrokeThickness="1" Stroke="{StaticResource MajorForegroundBrush}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="root" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="root" Property="Background" Value="{StaticResource MinorBackgroundBrush}"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=local:MainWindow}}" Value="Normal">
+                            <Setter TargetName="root" Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
     <Style x:Key="ButtonClose" TargetType="Button">
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="root">
+                    <Grid x:Name="root" Background="{StaticResource MajorBackgroundBrush}">
                         <Path Width="24" Height="24" Data="M 6,8 L 18,16 M 18,8 L 6,16" StrokeThickness="2" Stroke="{StaticResource MajorForegroundBrush}"/>
-                    </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="root" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="root" Property="Background" Value="{StaticResource MinorBackgroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

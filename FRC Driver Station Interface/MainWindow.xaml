@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource TitleBarSizeGrid}"/>
             <RowDefinition/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="24"/>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -21,9 +21,22 @@
                 <ColumnDefinition Width="{StaticResource TitleBarSizeGrid}"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="1" Margin="4" VerticalAlignment="Center" Foreground="{StaticResource MinorForegroundBrush}" Text="{StaticResource Title}"/>
-            <Button Grid.Column="2" Style="{StaticResource ButtonMinimize}"/>
-            <Button Grid.Column="3" Style="{StaticResource ButtonMaximize}"/>
-            <Button Grid.Column="4" Style="{StaticResource ButtonClose}"/>
+            <Button Grid.Column="2" Style="{StaticResource ButtonMinimize}" Click="minimize"/>
+            <Button Grid.Column="3" Style="{StaticResource ButtonMaximize}" Click="maximize"/>
+            <Button Grid.Column="3" Style="{StaticResource ButtonRestore}" Click="restore"/>
+            <Button Grid.Column="4" Style="{StaticResource ButtonClose}" Click="close"/>
+        </Grid>
+        <Frame Grid.Row="1" x:Name="frame" Padding="16"/>
+        <Grid Grid.Row="2" Background="{StaticResource MinorBackgroundBrush}" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="status" Foreground="{StaticResource MajorForegroundBrush}" Margin="4"/>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="4">
+                <ProgressBar x:Name="progress" Width="100" Height="16"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
