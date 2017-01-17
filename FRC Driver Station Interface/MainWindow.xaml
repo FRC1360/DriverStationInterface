@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FRC_Driver_Station_Interface"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="{StaticResource Title}" Height="350" Width="525" DataContext="{RelativeSource Self}">
+    <Grid Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource TitleBarSizeGrid}"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource TitleBarSizeGrid}"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="{StaticResource TitleBarSizeGrid}"/>
+                <ColumnDefinition Width="{StaticResource TitleBarSizeGrid}"/>
+                <ColumnDefinition Width="{StaticResource TitleBarSizeGrid}"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="1" Margin="4" VerticalAlignment="Center" Foreground="{StaticResource MinorForegroundBrush}" Text="{StaticResource Title}"/>
+            <Button Grid.Column="2" Style="{StaticResource ButtonMinimize}"/>
+            <Button Grid.Column="3" Style="{StaticResource ButtonMaximize}"/>
+            <Button Grid.Column="4" Style="{StaticResource ButtonClose}"/>
+        </Grid>
     </Grid>
 </Window>
