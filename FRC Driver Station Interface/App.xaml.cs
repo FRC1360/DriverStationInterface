@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Shell;
 
-namespace FRC_Driver_Station_Interface
+namespace Frc1360.DriverStation
 {
     /// <summary>
     /// Interaction logic for App.xaml

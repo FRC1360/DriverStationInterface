@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:FRC_Driver_Station_Interface"
+                    xmlns:local="clr-namespace:Frc1360.DriverStation"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:Double x:Key="TitleBarSize">24</sys:Double>
     <GridLength x:Key="TitleBarSizeGrid">24</GridLength>

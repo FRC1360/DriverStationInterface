@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FRC_Driver_Station_Interface.Views
+namespace Frc1360.DriverStation.Views
 {
     /// <summary>
     /// Interaction logic for Connecting.xaml
