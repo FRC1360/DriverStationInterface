@@ -5,10 +5,14 @@
     <sys:Double x:Key="TitleBarSize">24</sys:Double>
     <GridLength x:Key="TitleBarSizeGrid">24</GridLength>
     <sys:String x:Key="Title">Orbit Robotics | FIRST Robotics Team 1360 | Driver Station Interface</sys:String>
-    <SolidColorBrush x:Key="MajorForegroundBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="MinorForegroundBrush" Color="Gray"/>
-    <SolidColorBrush x:Key="MajorBackgroundBrush" Color="#333"/>
-    <SolidColorBrush x:Key="MinorBackgroundBrush" Color="#444"/>
+    <Color x:Key="MajorForeground">LightGray</Color>
+    <Color x:Key="MinorForeground">Gray</Color>
+    <Color x:Key="MajorBackground">#333</Color>
+    <Color x:Key="MinorBackground">#444</Color>
+    <SolidColorBrush x:Key="MajorForegroundBrush" Color="{StaticResource MajorForeground}"/>
+    <SolidColorBrush x:Key="MinorForegroundBrush" Color="{StaticResource MinorForeground}"/>
+    <SolidColorBrush x:Key="MajorBackgroundBrush" Color="{StaticResource MajorBackground}"/>
+    <SolidColorBrush x:Key="MinorBackgroundBrush" Color="{StaticResource MinorBackground}"/>
     <Style TargetType="local:MainWindow">
         <Setter Property="WindowState" Value="Maximized"/>
         <Setter Property="Background" Value="{StaticResource MajorBackgroundBrush}"/>

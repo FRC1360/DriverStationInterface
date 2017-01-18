@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FRC_Driver_Station_Interface"
         mc:Ignorable="d"
-        Title="{StaticResource Title}" Height="350" Width="525" DataContext="{RelativeSource Self}">
+        Title="{StaticResource Title}" Height="350" Width="525" DataContext="{Binding Content, ElementName=frame}" Icon="/Resources/Logo.jpg">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo ProgressValue="{Binding (local:App.ProgressValue), Mode=OneWay}" ProgressState="{Binding (local:App.ProgressState), Mode=OneWay}"/>
+    </Window.TaskbarItemInfo>
     <Grid Margin="6">
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource TitleBarSizeGrid}"/>
@@ -20,22 +23,23 @@
                 <ColumnDefinition Width="{StaticResource TitleBarSizeGrid}"/>
                 <ColumnDefinition Width="{StaticResource TitleBarSizeGrid}"/>
             </Grid.ColumnDefinitions>
+            <Image Source="{Binding Icon, RelativeSource={RelativeSource AncestorType=local:MainWindow}}"/>
             <TextBlock Grid.Column="1" Margin="4" VerticalAlignment="Center" Foreground="{StaticResource MinorForegroundBrush}" Text="{StaticResource Title}"/>
             <Button Grid.Column="2" Style="{StaticResource ButtonMinimize}" Click="minimize"/>
             <Button Grid.Column="3" Style="{StaticResource ButtonMaximize}" Click="maximize"/>
             <Button Grid.Column="3" Style="{StaticResource ButtonRestore}" Click="restore"/>
             <Button Grid.Column="4" Style="{StaticResource ButtonClose}" Click="close"/>
         </Grid>
-        <Frame Grid.Row="1" x:Name="frame" Padding="16"/>
+        <Frame Grid.Row="1" x:Name="frame" Padding="16" Source="/Views/Connecting.xaml"/>
         <Grid Grid.Row="2" Background="{StaticResource MinorBackgroundBrush}" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="status" Foreground="{StaticResource MajorForegroundBrush}" Margin="4"/>
+            <TextBlock x:Name="status" Foreground="{StaticResource MajorForegroundBrush}" Margin="4" Text="{Binding (local:App.Status)}"/>
             <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="4">
-                <ProgressBar x:Name="progress" Width="100" Height="16"/>
+                <ProgressBar x:Name="progress" Width="100" Height="16" Value="{Binding (local:App.ProgressValue), Mode=OneWay}" IsIndeterminate="{Binding (local:App.ProgressIndeterminate), Mode=OneWay}" Visibility="{Binding (local:App.ProgressVisibility), Mode=OneWay}" Minimum="0" Maximum="1"/>
             </StackPanel>
         </Grid>
     </Grid>
