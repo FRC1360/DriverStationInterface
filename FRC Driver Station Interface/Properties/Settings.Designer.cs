@@ -22,5 +22,17 @@ namespace Frc1360.DriverStation.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%localappdata%\\FRC1360\\Components")]
+        public string ComponentsDirectory {
+            get {
+                return ((string)(this["ComponentsDirectory"]));
+            }
+            set {
+                this["ComponentsDirectory"] = value;
+            }
+        }
     }
 }

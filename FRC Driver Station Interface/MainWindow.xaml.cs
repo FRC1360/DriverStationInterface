@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using Frc1360.DriverStation.Properties;
 
 namespace Frc1360.DriverStation
 {
@@ -43,6 +45,11 @@ namespace Frc1360.DriverStation
         private void close(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void ComponentsFolder(object sender, RoutedEventArgs e)
+        {
+            Process.Start(Environment.ExpandEnvironmentVariables(Settings.Default.ComponentsDirectory));
         }
     }
 }

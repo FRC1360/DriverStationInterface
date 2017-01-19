@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net;
+using Frc1360.DriverStation.RobotComm;
 
 namespace Frc1360.DriverStation.Views
 {
@@ -25,9 +27,27 @@ namespace Frc1360.DriverStation.Views
             InitializeComponent();
         }
 
-        private void loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        private void loaded(object sender, RoutedEventArgs e) => Task.Run(async () =>
+            {
+            restart:
+                try
+                {
+                    App.Connection = new Connection(new IPEndPoint(new IPAddress(new byte[] { 10, 13, 60, 2 }), 5800));
+                    foreach (var c in Components.ComponentControllers)
+                        await c.Value.InitializeAsync(App.Connection);
+                }
+                catch (Exception ex)
+                {
+                    if (Dispatcher.Invoke(() =>
+                    {
+                        App.SetStatus(this, "Failed to connect");
+                        App.SetProgress(this, null);
+                        return MessageBox.Show(Application.Current.MainWindow, "An error occured while while connecting to the robot; would you like to try again?\n\n" + ex.ToString(), "An error occured", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes;
+                    }))
+                        goto restart;
+                    Dispatcher.Invoke(Application.Current.Shutdown);
+                }
+                Dispatcher.Invoke(() => NavigationService.Navigate(new Uri("/Views/Dashboard.xaml", UriKind.Relative)));
+            });
     }
 }

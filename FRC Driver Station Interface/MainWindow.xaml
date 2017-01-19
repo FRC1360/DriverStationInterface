@@ -12,6 +12,7 @@
     <Grid Margin="6">
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource TitleBarSizeGrid}"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
             <RowDefinition Height="24"/>
         </Grid.RowDefinitions>
@@ -30,8 +31,13 @@
             <Button Grid.Column="3" Style="{StaticResource ButtonRestore}" Click="restore"/>
             <Button Grid.Column="4" Style="{StaticResource ButtonClose}" Click="close"/>
         </Grid>
-        <Frame Grid.Row="1" x:Name="frame" Padding="16" Source="/Views/Connecting.xaml"/>
-        <Grid Grid.Row="2" Background="{StaticResource MinorBackgroundBrush}" VerticalAlignment="Stretch">
+        <Menu Grid.Row="1">
+            <MenuItem Header="_File">
+                <MenuItem Header="Open Components Folder" Click="ComponentsFolder"/>
+            </MenuItem>
+        </Menu>
+        <Frame Grid.Row="2" x:Name="frame" Padding="16" Source="/Views/Connecting.xaml"/>
+        <Grid Grid.Row="3" Background="{StaticResource MinorBackgroundBrush}" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>

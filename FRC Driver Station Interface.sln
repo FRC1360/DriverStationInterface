@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25914.0
+VisualStudioVersion = 15.0.26020.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRC Driver Station Interface", "FRC Driver Station Interface\FRC Driver Station Interface.csproj", "{B71DECD5-20A1-478E-89C2-E2FDF556F21C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot Communication Interface", "Robot Communication Interface\Robot Communication Interface.csproj", "{D6932C97-1A10-48B2-80B0-04EE451C6B5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{E5D383AB-6EA6-4C20-BB89-69A4B49F76F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autonomous Selector", "Autonomous Selector\Autonomous Selector.csproj", "{97B33714-CAC9-4D97-B5F2-23C801E452E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +21,19 @@ Global
 		{B71DECD5-20A1-478E-89C2-E2FDF556F21C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B71DECD5-20A1-478E-89C2-E2FDF556F21C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B71DECD5-20A1-478E-89C2-E2FDF556F21C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6932C97-1A10-48B2-80B0-04EE451C6B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6932C97-1A10-48B2-80B0-04EE451C6B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6932C97-1A10-48B2-80B0-04EE451C6B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6932C97-1A10-48B2-80B0-04EE451C6B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B33714-CAC9-4D97-B5F2-23C801E452E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B33714-CAC9-4D97-B5F2-23C801E452E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B33714-CAC9-4D97-B5F2-23C801E452E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B33714-CAC9-4D97-B5F2-23C801E452E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{97B33714-CAC9-4D97-B5F2-23C801E452E0} = {E5D383AB-6EA6-4C20-BB89-69A4B49F76F0}
 	EndGlobalSection
 EndGlobal
