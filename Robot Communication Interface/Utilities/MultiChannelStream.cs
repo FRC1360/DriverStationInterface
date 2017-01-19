@@ -180,10 +180,9 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
 
             public override void Write(byte[] buffer, int offset, int count)
             {
-                int end = offset + count, n;
                 while (count != 0)
                 {
-                    n = Math.Min(count, ushort.MaxValue);
+                    int n = Math.Min(count, ushort.MaxValue);
                     lock (mcs.wl)
                         using (var w = new BinaryWriter(mcs.stream, Encoding.UTF8, true))
                         {
