@@ -20,9 +20,12 @@ namespace Frc1360.DriverStation.Components.AutonomousSelector
     /// </summary>
     public partial class Selector : UserControl
     {
-        public Selector()
+        public AutonController Controller { get; }
+
+        public Selector(AutonController controller)
         {
             InitializeComponent();
+            Controller = controller;
         }
     }
 }

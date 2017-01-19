@@ -15,11 +15,16 @@ namespace Frc1360.DriverStation.Components.AutonomousSelector
     [ExportMetadata("Name", "Autonomous Selector")]
     public sealed class ComponentController : IComponentController
     {
-        UIElement IComponentController.Display => new Selector();
+        private Selector selector;
 
-        async Task IComponentController.InitializeAsync(Connection connection)
-        {
-            throw new NotImplementedException();
-        }
+        public AutonController Controller;
+
+        public UIElement Display => selector;
+
+        public Task InitializeAsync(Connection connection) => Task.Run(() =>
+            {
+                Controller = new AutonController(connection);
+                selector = new Selector(Controller);
+            });
     }
 }
