@@ -26,19 +26,14 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
                       using (var r = new BinaryReader(stream))
                           while (work)
                           {
-                              byte c = 0;
-                              ushort l = 0;
-                              byte[] data = null;
+                              byte c;
+                              ushort l;
+                              byte[] data;
                               lock (rl)
                               {
                                   c = r.ReadByte();
                                   l = r.ReadUInt16Big();
                                   data = r.ReadBytes(l);
-                              }
-                              if (data == null)
-                              {
-                                  Thread.Sleep(10);
-                                  continue;
                               }
                               lock (buffers[c])
                               {
