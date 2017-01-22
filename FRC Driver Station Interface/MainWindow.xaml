@@ -36,7 +36,7 @@
                 <MenuItem Header="Open Components Folder" Click="ComponentsFolder"/>
             </MenuItem>
         </Menu>
-        <Frame Grid.Row="2" x:Name="frame" Padding="16" Source="/Views/Connecting.xaml"/>
+        <Frame Grid.Row="2" x:Name="frame" Padding="16" Source="/Views/Connecting.xaml" NavigationUIVisibility="Hidden"/>
         <Grid Grid.Row="3" Background="{StaticResource MinorBackgroundBrush}" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>

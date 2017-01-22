@@ -23,6 +23,7 @@ namespace Frc1360.DriverStation.Views
         public Dashboard()
         {
             InitializeComponent();
+            list.ItemsSource = Components.ComponentControllers;
         }
     }
 }
