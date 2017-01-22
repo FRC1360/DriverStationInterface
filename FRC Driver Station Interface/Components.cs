@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.IO;
 using Frc1360.DriverStation.RobotComm.ComponentModel;
 using Frc1360.DriverStation.Properties;
 
@@ -14,11 +15,14 @@ namespace Frc1360.DriverStation
     {
         private static Components instance;
 
+        [ImportMany]
         public IEnumerable<Lazy<IComponentController, IComponentControllerMetadata>> Controllers;
 
         private Components()
         {
-            new CompositionContainer(new DirectoryCatalog(Environment.ExpandEnvironmentVariables(Settings.Default.ComponentsDirectory))).ComposeParts(this);
+            if (!Directory.Exists(App.ComponentsDirectory))
+                Directory.CreateDirectory(App.ComponentsDirectory);
+            new CompositionContainer(new DirectoryCatalog(App.ComponentsDirectory)).ComposeParts(this);
         }
 
         static Components()

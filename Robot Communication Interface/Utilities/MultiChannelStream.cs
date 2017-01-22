@@ -45,6 +45,7 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
                   catch { errorNotifiers?.Invoke(); }
               });
             rt.Start();
+            Thread.Yield();
         }
 
         public Stream GetChannelStream(byte channel) => streams[channel] ?? (streams[channel] = new ChannelStream(this, channel));
@@ -76,7 +77,7 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
             {
                 mcs = stream;
                 ch = channel;
-                lock (mcs.buffers[ch])
+                lock (mcs.buffers[ch] ?? (mcs.buffers[ch] = new MemoryStream()))
                 {
                     if (mcs.buffers[ch] == null)
                         mcs.buffers[ch] = new MemoryStream();
@@ -179,14 +180,16 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
                 {
                     int n = Math.Min(count, ushort.MaxValue);
                     lock (mcs.wl)
+                    {
                         using (var w = new BinaryWriter(mcs.stream, Encoding.UTF8, true))
                         {
                             w.Write(ch);
                             w.WriteUInt16Big((ushort)n);
                             w.Flush();
-                            mcs.stream.Write(buffer, offset, n);
-                            mcs.stream.Flush();
                         }
+                        mcs.stream.Write(buffer, offset, n);
+                        mcs.stream.Flush();
+                    }
                     offset += n;
                     count -= n;
                 }

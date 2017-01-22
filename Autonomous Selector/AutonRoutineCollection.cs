@@ -16,6 +16,8 @@ namespace Frc1360.DriverStation.Components.AutonomousSelector
         public AutonRoutineCollection(int size)
         {
             containers = new Container[size];
+            for (int i = 0; i < size; ++i)
+                containers[i] = new Container(this, i, null);
         }
 
         int IReadOnlyCollection<Container>.Count => containers.Length;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows;
 using Frc1360.DriverStation.RobotComm.Utilities;
 
 namespace Frc1360.DriverStation.RobotComm
@@ -21,8 +22,8 @@ namespace Frc1360.DriverStation.RobotComm
         public CommandControllerBase(Connection conn, byte channel) : base(conn, channel, out streamTemp)
         {
             stream = streamTemp;
-            r = new BinaryReader(stream);
-            w = new BinaryWriter(stream);
+            r = new BinaryReader(stream, Encoding.UTF8, true);
+            w = new BinaryWriter(stream, Encoding.UTF8, true);
             rt = ReceiveAsync();
         }
 
@@ -36,13 +37,8 @@ namespace Frc1360.DriverStation.RobotComm
                 int len = data.UInt32Big(2).Signed();
                 data = new byte[len];
                 await stream.ReadAsync(data, 0, len);
-                HandleCommandAsync(id, data);
+                OnCommand(id, data);
             }
-        }
-
-        private async void HandleCommandAsync(ushort id, byte[] data)
-        {
-            await Task.Run(() => OnCommand(id, data));
         }
 
         protected void SendCommand(ushort id, params object[] data)
@@ -57,8 +53,8 @@ namespace Frc1360.DriverStation.RobotComm
                         else
                             throw new InvalidDataException($"Cannot serialize object of type '{o?.GetType().FullName ?? "null"}'");
                     w.WriteUInt16Big(id);
-                    w.Write(data.Length.Unsigned().BigEndian());
-                    ms.CopyTo(stream);
+                    w.Write(((int)ms.Length).Unsigned().BigEndian());
+                    w.Write(ms.ToArray());
                 }
         }
 

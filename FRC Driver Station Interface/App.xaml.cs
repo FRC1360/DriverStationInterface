@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Shell;
+using Frc1360.DriverStation.Properties;
 using Frc1360.DriverStation.RobotComm;
 
 namespace Frc1360.DriverStation
@@ -16,6 +17,8 @@ namespace Frc1360.DriverStation
     public partial class App : Application
     {
         public static Connection Connection { get; set; }
+
+        public static string ComponentsDirectory => Environment.ExpandEnvironmentVariables(Settings.Default.ComponentsDirectory);
 
         public static readonly DependencyProperty StatusProperty = DependencyProperty.RegisterAttached("Status", typeof(string), typeof(App), new PropertyMetadata("Ready"));
 
@@ -37,10 +40,6 @@ namespace Frc1360.DriverStation
 
         public static readonly DependencyProperty ProgressStateProperty = ProgressStatePropertyKey.DependencyProperty;
 
-        public static readonly DependencyPropertyKey ComponentsPropertyKey = DependencyProperty.RegisterAttachedReadOnly("Components", typeof(IEnumerable), typeof(App), new PropertyMetadata(null));
-
-        public static readonly DependencyProperty ComponentsProperty = ComponentsPropertyKey.DependencyProperty;
-
         public static string GetStatus(DependencyObject target) => target.GetValue(StatusProperty) as string;
 
         public static void SetStatus(DependencyObject target, string value) => target.SetValue(StatusProperty, value);
@@ -56,8 +55,6 @@ namespace Frc1360.DriverStation
         public static Visibility GetProgressVisibility(DependencyObject target) => (Visibility)target.GetValue(ProgressVisibilityProperty);
 
         public static TaskbarItemProgressState GetProgressState(DependencyObject target) => (TaskbarItemProgressState)target.GetValue(ProgressStateProperty);
-
-        public static IEnumerable GetComponents(DependencyProperty target) => Components.ComponentControllers;
 
         private static void progressChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {

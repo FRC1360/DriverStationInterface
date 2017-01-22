@@ -49,7 +49,7 @@ namespace Frc1360.DriverStation
 
         private void ComponentsFolder(object sender, RoutedEventArgs e)
         {
-            Process.Start(Environment.ExpandEnvironmentVariables(Settings.Default.ComponentsDirectory));
+            Process.Start(App.ComponentsDirectory);
         }
     }
 }

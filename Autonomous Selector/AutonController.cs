@@ -24,21 +24,22 @@ namespace Frc1360.DriverStation.Components.AutonomousSelector
 
         protected override void OnCommand(ushort id, byte[] data)
         {
-            switch (id)
-            {
-                case 0:
-                    if (ewh != null)
-                    {
-                        var len = data.UInt16Big(0);
-                        AutonomousSelection = new AutonRoutineCollection(len);
-                        AutonomousSelection.Updated += AutonomousSelectionUpdated;
-                        ewh.Set();
-                    }
-                    break;
-                case 1:
-                    AutonomousSelection[data.UInt16Big(0)].Options.Add(new AutonRoutine(Encoding.UTF8.GetString(data, 4, data.Length - 4), data.UInt16Big(2)));
-                    break;
-            }
+            lock (this)
+                switch (id)
+                {
+                    case 0:
+                        if (ewh != null)
+                        {
+                            var len = data.UInt16Big(0);
+                            AutonomousSelection = new AutonRoutineCollection(len);
+                            AutonomousSelection.Updated += AutonomousSelectionUpdated;
+                            ewh.Set();
+                        }
+                        break;
+                    case 1:
+                        AutonomousSelection[data.UInt16Big(0)].Options.Add(new AutonRoutine(Encoding.UTF8.GetString(data, 4, data.Length - 4), data.UInt16Big(2)));
+                        break;
+                }
         }
 
         private void AutonomousSelectionUpdated(int index, AutonRoutine routine) => SendCommand(1, index, routine.ID);
