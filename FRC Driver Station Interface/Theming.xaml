@@ -101,4 +101,20 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="StatusBarButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="root" Margin="5,0" VerticalAlignment="Stretch">
+                        <ContentPresenter Margin="5,0" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="root" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="root" Property="Background" Value="{StaticResource MajorBackgroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
