@@ -20,5 +20,7 @@ namespace Frc1360.DriverStation.Components.AutonomousSelector
         public string Name => name;
 
         public ushort ID => id;
+
+        public override string ToString() => name;
     }
 }
