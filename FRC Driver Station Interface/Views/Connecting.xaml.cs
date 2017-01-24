@@ -32,7 +32,7 @@ namespace Frc1360.DriverStation.Views
             restart:
                 try
                 {
-                    App.Connection = new Connection(new IPEndPoint(/*new IPAddress(new byte[] { 10, 13, 60, 2 })*/IPAddress.Loopback, 5800));
+                    App.Connection = new Connection(new IPEndPoint(new IPAddress(new byte[] { 10, 13, 60, 2 }), 5801));
                     foreach (var c in Components.ComponentControllers)
                         await c.Value.InitializeAsync(App.Connection);
                 }
