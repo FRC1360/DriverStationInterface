@@ -79,5 +79,7 @@ namespace Frc1360.DriverStation
                 o.SetValue(ProgressStatePropertyKey, TaskbarItemProgressState.None);
             }
         }
+
+        protected override void OnExit(ExitEventArgs e) => Environment.Exit(e.ApplicationExitCode);
     }
 }
