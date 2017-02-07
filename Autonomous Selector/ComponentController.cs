@@ -24,10 +24,7 @@ namespace Frc1360.DriverStation.Components.AutonomousSelector
         public Task InitializeAsync(Connection connection) => Task.Run(() =>
             {
                 Controller = new AutonController(connection);
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    selector = new Selector(Controller);
-                });
+                Application.Current.Dispatcher.Invoke(() => selector = new Selector(Controller));
             });
     }
 }
