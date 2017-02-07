@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Frc1360.DriverStation.RobotComm;
+using Frc1360.DriverStation.RobotComm.Utilities;
 
 namespace Frc1360.DriverStation.Components.ClimberCurrent
 {
@@ -22,7 +23,7 @@ namespace Frc1360.DriverStation.Components.ClimberCurrent
                 using (var r = new BinaryReader(s))
                     while (true)
                     {
-                        var c = r.ReadSingle();
+                        var c = r.ReadFloat1360();
                         d.Dispatcher.Invoke(() =>
                         {
                             d.current.Text = $"{c} A";

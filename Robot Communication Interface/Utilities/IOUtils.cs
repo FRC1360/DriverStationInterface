@@ -15,6 +15,8 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
             w.Write(b);
         }
 
+        public static float ReadFloat1360(this BinaryReader r) => BitConverter.ToSingle(BitConverter.GetBytes(UInt32Big(r.ReadBytes(4), 0)), 0);
+        
         public static Guid ReadGuid(this BinaryReader r) => new Guid(r.ReadBytes(16));
 
         public static void WriteGuid(this BinaryWriter w, Guid g) => w.Write(g.ToByteArray());
@@ -68,18 +70,18 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
             return (ushort)((a[offset] << 8) + a[offset + 1]);
         }
 
-        public static ushort UInt32Big(this byte[] a, int offset)
+        public static uint UInt32Big(this byte[] a, int offset)
         {
             if (a.Length - offset < 4)
                 throw new ArgumentOutOfRangeException("Less than 4 bytes available after offset!");
-            return (ushort)((a[offset] << 24) + (a[offset + 1] << 16) + (a[offset + 2] << 8) + a[offset + 3]);
+            return (uint)((a[offset] << 24) + (a[offset + 1] << 16) + (a[offset + 2] << 8) + a[offset + 3]);
         }
 
-        public static ushort UInt64Big(this byte[] a, int offset)
+        public static ulong UInt64Big(this byte[] a, int offset)
         {
             if (a.Length - offset < 8)
                 throw new ArgumentOutOfRangeException("Less than 8 bytes available after offset!");
-            return (ushort)((a[offset] << 56) + (a[offset + 1] << 48) + (a[offset + 2] << 40) + (a[offset + 3] << 32) + (a[offset + 4] << 24) + (a[offset + 5] << 16) + (a[offset + 6] << 8) + a[offset + 7]);
+            return (ulong)((a[offset] << 56) + (a[offset + 1] << 48) + (a[offset + 2] << 40) + (a[offset + 3] << 32) + (a[offset + 4] << 24) + (a[offset + 5] << 16) + (a[offset + 6] << 8) + a[offset + 7]);
         }
 
         public static byte[] BigEndian(this ushort v) => new[] { (byte)(v >> 8), (byte)(v & 0xFF) };
