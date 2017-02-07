@@ -51,6 +51,7 @@
     <Compile Include="ComponentModel\IComponentControllerMetadata.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ControllerBase.cs" />
+    <Compile Include="Utilities\IntermediaryStream.cs" />
     <Compile Include="Utilities\IOUtils.cs" />
     <Compile Include="Utilities\MultiChannelStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
