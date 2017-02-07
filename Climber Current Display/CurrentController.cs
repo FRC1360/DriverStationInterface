@@ -28,8 +28,6 @@ namespace Frc1360.DriverStation.Components.ClimberCurrent
                         {
                             d.current.Text = $"{c} A";
                             data.Add(c);
-                            if (data.Count > 50)
-                                data.RemoveAt(0);
                         });
                     }
             });
