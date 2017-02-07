@@ -14,10 +14,10 @@ namespace Frc1360.DriverStation.RobotComm
         private TcpClient conn;
         internal readonly MultiChannelStream mcs;
 
-        public Connection(IPEndPoint target)
+        public Connection(string hostname, int port)
         {
             conn = new TcpClient();
-            conn.Connect(target);
+            conn.Connect(hostname, port);
             mcs = new MultiChannelStream(conn.GetStream());
         }
     }
