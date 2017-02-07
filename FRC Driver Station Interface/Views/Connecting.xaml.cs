@@ -32,7 +32,13 @@ namespace Frc1360.DriverStation.Views
             restart:
                 try
                 {
-                    App.Connection = new Connection("roboRIO-1360-FRC.local", 5801);
+                    App.Connection = new Connection("roboRIO-1360-FRC.local", 5801, ex => Dispatcher.Invoke(() =>
+                        {
+                            App.SetStatus(this, "Failed to connect");
+                            App.SetProgress(this, null);
+                            if (MessageBox.Show(Application.Current.MainWindow, "An error occured and the connection was dropped; would you like to try to reconnect?\n\n" + ex.ToString(), "An error occured", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.No)
+                                Application.Current.Shutdown();
+                        }));
                     foreach (var c in Components.ComponentControllers)
                         await c.Value.InitializeAsync(App.Connection);
                 }
