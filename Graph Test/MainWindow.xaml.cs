@@ -14,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DynamicDataDisplay.Markers.DataSources;
 
 namespace Graph_Test
 {
@@ -27,22 +26,6 @@ namespace Graph_Test
         {
             InitializeComponent();
             chart.DataSource = new float[] { 0.0f, 1.0f, 0.5f };
-            //chart.DataSource = new DataSource(new float[] { 0.0f, 1.0f, 0.5f });
-            //chart.DataSource = new PointArrayDataSource(new Point[] { new Point(0.0, 1.0), new Point(1.0, 0.0) });
-        }
-
-        private class DataSource : PointDataSourceBase
-        {
-            IEnumerable<float> data;
-
-            public DataSource(IEnumerable<float> data)
-            {
-                this.data = data;
-                if (data is INotifyCollectionChanged ncc)
-                    ncc.CollectionChanged += OnCollectionChanged;
-            }
-
-            protected override IEnumerable GetDataCore(DataSourceEnvironment environment) => data.Select((y, x) => new Point(x, y));
         }
     }
 }
