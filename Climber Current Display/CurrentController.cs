@@ -18,6 +18,7 @@ namespace Frc1360.DriverStation.Components.ClimberCurrent
         public CurrentController(Connection conn, Display display) : base(conn, 1, out s)
         {
             d = display;
+            d.graph.DataSource = data;
             Task.Run(() =>
             {
                 using (var r = new BinaryReader(s))
