@@ -23,11 +23,6 @@ namespace Frc1360.DriverStation.CustomControls
         private static readonly DependencyPropertyKey GeometryPropertyKey = DependencyProperty.RegisterReadOnly("Geometry", typeof(Geometry), typeof(LineGraph), new PropertyMetadata());
         public static readonly DependencyProperty GeometryProperty = GeometryPropertyKey.DependencyProperty;
 
-        public LineGraph()
-        {
-            
-        }
-
         static LineGraph()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(LineGraph), new FrameworkPropertyMetadata(typeof(LineGraph)));
@@ -84,19 +79,5 @@ namespace Frc1360.DriverStation.CustomControls
                 Redraw();
             }
         }
-        /*
-        protected override Size MeasureOverride(Size constraint)
-        {
-            constraint = base.MeasureOverride(constraint);
-            double value = Math.Min(constraint.Width, constraint.Height);
-            return new Size(value, value);
-        }
-
-        protected override Size ArrangeOverride(Size arrangeBounds)
-        {
-            arrangeBounds = base.ArrangeOverride(arrangeBounds);
-            double value = Math.Min(arrangeBounds.Width, arrangeBounds.Height);
-            return new Size(value, value);
-        }*/
     }
 }
