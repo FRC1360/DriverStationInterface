@@ -19,13 +19,13 @@ namespace Frc1360.DriverStation.CustomControls
 {
     public sealed class LineGraph : Control
     {
-        public static DependencyProperty DataSourceProperty = DependencyProperty.Register("DataSource", typeof(IEnumerable), typeof(LineGraph));
-        public static DependencyPropertyKey GeometryPropertyKey = DependencyProperty.RegisterReadOnly("Geometry", typeof(Geometry), typeof(LineGraph), new PropertyMetadata());
-        public static DependencyProperty GeometryProperty = GeometryPropertyKey.DependencyProperty;
+        public static readonly DependencyProperty DataSourceProperty = DependencyProperty.Register("DataSource", typeof(IEnumerable), typeof(LineGraph));
+        private static readonly DependencyPropertyKey GeometryPropertyKey = DependencyProperty.RegisterReadOnly("Geometry", typeof(Geometry), typeof(LineGraph), new PropertyMetadata());
+        public static readonly DependencyProperty GeometryProperty = GeometryPropertyKey.DependencyProperty;
 
         public LineGraph()
         {
-            this.ApplyTemplate();
+            
         }
 
         static LineGraph()
@@ -64,8 +64,9 @@ namespace Frc1360.DriverStation.CustomControls
 
         private void Redraw()
         {
-            var src = Enumerate();
-            Geometry = src.GetEnumerator().MoveNext() ? new PathGeometry(new[] { new PathFigure(new Point(0, src.First()), src.Select((y, x) => new LineSegment(new Point(x + 1, y), true)), false) }, FillRule.EvenOdd, new ScaleTransform(1.0 / Math.Min(1, src.Count() - 1), src.Max(), 0, 0)) : new PathGeometry();
+            var src = Enumerate().ToArray();
+            var max = src.Max();
+            Geometry = src.Length > 0 ? new PathGeometry(new[] { new PathFigure(new Point(0, src[0]), src.Skip(1).Select((y, x) => new LineSegment(new Point(x + 1, y * (src.Length - 1) / max), true)), false) }) : new PathGeometry();
             InvalidateMeasure();
         }
 
@@ -73,6 +74,7 @@ namespace Frc1360.DriverStation.CustomControls
 
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
+            base.OnPropertyChanged(e);
             if (e.Property == DataSourceProperty)
             {
                 if (e.OldValue is INotifyCollectionChanged ncc_old)
@@ -82,17 +84,19 @@ namespace Frc1360.DriverStation.CustomControls
                 Redraw();
             }
         }
-
+        /*
         protected override Size MeasureOverride(Size constraint)
         {
+            constraint = base.MeasureOverride(constraint);
             double value = Math.Min(constraint.Width, constraint.Height);
             return new Size(value, value);
         }
 
         protected override Size ArrangeOverride(Size arrangeBounds)
         {
+            arrangeBounds = base.ArrangeOverride(arrangeBounds);
             double value = Math.Min(arrangeBounds.Width, arrangeBounds.Height);
             return new Size(value, value);
-        }
+        }*/
     }
 }
