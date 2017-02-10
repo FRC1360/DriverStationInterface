@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autonomous Selector", "Autonomous Selector\Autonomous Selector.csproj", "{97B33714-CAC9-4D97-B5F2-23C801E452E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Encoder Display", "Test Encoder Display\Test Encoder Display.csproj", "{FECB9AEE-D8C5-439B-A2A5-3D3C8A2949F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,11 +31,16 @@ Global
 		{97B33714-CAC9-4D97-B5F2-23C801E452E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97B33714-CAC9-4D97-B5F2-23C801E452E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97B33714-CAC9-4D97-B5F2-23C801E452E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FECB9AEE-D8C5-439B-A2A5-3D3C8A2949F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FECB9AEE-D8C5-439B-A2A5-3D3C8A2949F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FECB9AEE-D8C5-439B-A2A5-3D3C8A2949F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FECB9AEE-D8C5-439B-A2A5-3D3C8A2949F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{97B33714-CAC9-4D97-B5F2-23C801E452E0} = {E5D383AB-6EA6-4C20-BB89-69A4B49F76F0}
+		{FECB9AEE-D8C5-439B-A2A5-3D3C8A2949F1} = {E5D383AB-6EA6-4C20-BB89-69A4B49F76F0}
 	EndGlobalSection
 EndGlobal
