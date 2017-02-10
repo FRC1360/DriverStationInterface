@@ -24,7 +24,8 @@ namespace Frc1360.DriverStation.Components.TestEncoderDisplay
                 using (var r = new BinaryReader(stream))
                     while (true)
                     {
-                        
+                        string value = r.ReadFloat1360().ToString();
+                        display.Dispatcher.Invoke(() => display.text.Text = value);
                     }
             });
         }

@@ -16,11 +16,14 @@ namespace Frc1360.DriverStation.Components.TestEncoderDisplay
     {
         private Display display;
 
+        private EncoderController controller;
+
         public UIElement Display => display;
 
         public Task InitializeAsync(Connection connection) => Task.Run(() =>
         {
-
+            Application.Current.Dispatcher.Invoke(() => display = new Display());
+            controller = new EncoderController(connection, display);
         });
     }
 }
