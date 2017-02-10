@@ -35,7 +35,7 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
                                   l = r.ReadUInt16Big();
                                   data = r.ReadBytes(l);
                               }
-                              lock (buffers[c])
+                              lock (buffers[c] ?? (buffers[c] = new MemoryStream()))
                               {
                                   (buffers[c] ?? (buffers[c] = new MemoryStream())).Write(data, 0, l);
                                   notifiers[c]?.Invoke();
