@@ -137,6 +137,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Custom User Interface Elements\Custom User Interface Elements.csproj">
+      <Project>{b04cf7f7-0aeb-4f64-99b0-5f4667214714}</Project>
+      <Name>Custom User Interface Elements</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Robot Communication Interface\Robot Communication Interface.csproj">
       <Project>{d6932c97-1a10-48b2-80b0-04ee451c6b5d}</Project>
       <Name>Robot Communication Interface</Name>
