@@ -11,7 +11,6 @@ namespace Frc1360.DriverStation.Components.ConfigSelector
     public sealed class ConfigController : CommandControllerBase
     {
         private EventWaitHandle ewh = new EventWaitHandle(false, EventResetMode.AutoReset);
-        private byte[] data;
 
         public ConfigController(Connection conn, byte channel) : base(conn, channel)
         {
@@ -19,20 +18,7 @@ namespace Frc1360.DriverStation.Components.ConfigSelector
             ewh.WaitOne();
         }
 
-        public IEnumerable Options
-        {
-            get
-            {
-                ushort count = data.UInt16Big(0);
-                int off = 2;
-                for (int i = 0; i < count; ++i)
-                {
-                    var s = data.String1360(off);
-                    yield return s;
-                    off += s.Length;
-                }
-            }
-        }
+        public IEnumerable Options { get; private set; }
 
         public void Update(int selection) => SendCommand(1, selection);
 
@@ -41,7 +27,18 @@ namespace Frc1360.DriverStation.Components.ConfigSelector
             switch (id)
             {
                 case 0:
-                    this.data = data;
+                    IEnumerable generate()
+                    {
+                        ushort count = data.UInt16Big(0);
+                        int off = 2;
+                        for (int i = 0; i < count; ++i)
+                        {
+                            var s = data.String1360(off);
+                            yield return s;
+                            off += s.Length;
+                        }
+                    }
+                    Options = generate();
                     ewh.Set();
                     break;
             }
