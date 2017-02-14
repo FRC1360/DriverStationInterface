@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph Test", "Graph Test\Gr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custom User Interface Elements", "Custom User Interface Elements\Custom User Interface Elements.csproj", "{B04CF7F7-0AEB-4F64-99B0-5F4667214714}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver Configuration Selector", "Driver Configuration Selector\Driver Configuration Selector.csproj", "{DBFB176B-D604-4805-9B01-24348969BBFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{B04CF7F7-0AEB-4F64-99B0-5F4667214714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B04CF7F7-0AEB-4F64-99B0-5F4667214714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B04CF7F7-0AEB-4F64-99B0-5F4667214714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFB176B-D604-4805-9B01-24348969BBFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFB176B-D604-4805-9B01-24348969BBFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFB176B-D604-4805-9B01-24348969BBFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFB176B-D604-4805-9B01-24348969BBFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +63,6 @@ Global
 		{97B33714-CAC9-4D97-B5F2-23C801E452E0} = {E5D383AB-6EA6-4C20-BB89-69A4B49F76F0}
 		{B5022766-3702-4CC5-956D-9DC259FF1B6D} = {E5D383AB-6EA6-4C20-BB89-69A4B49F76F0}
 		{616E4FEA-4FB2-4623-8403-F7AFFB6B3E02} = {B9B562DC-D304-42AF-845F-D99832CA650C}
+		{DBFB176B-D604-4805-9B01-24348969BBFF} = {E5D383AB-6EA6-4C20-BB89-69A4B49F76F0}
 	EndGlobalSection
 EndGlobal
