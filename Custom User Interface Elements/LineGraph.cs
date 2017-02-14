@@ -60,8 +60,8 @@ namespace Frc1360.DriverStation.CustomControls
         private void Redraw()
         {
             var src = Enumerate().ToArray();
-            var max = src.Max();
-            Geometry = src.Length > 0 ? new PathGeometry(new[] { new PathFigure(new Point(0, src[0]), src.Skip(1).Select((y, x) => new LineSegment(new Point(x + 1, y * (src.Length - 1) / max), true)), false) }) : new PathGeometry();
+            var max = src.Length == 0 ? 0 : src.Max();
+            Geometry = src.Length > 0 ? new PathGeometry(new[] { new PathFigure(new Point(0, src[0] * (src.Length - 1) / max), src.Skip(1).Select((y, x) => new LineSegment(new Point(x + 1, y * (src.Length - 1) / max), true)), false) }) : new PathGeometry();
             InvalidateMeasure();
         }
 

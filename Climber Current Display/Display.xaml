@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:Frc1360.DriverStation.Components.ClimberCurrent"
              xmlns:cc="clr-namespace:Frc1360.DriverStation.CustomControls;assembly=Frc1360.DriverStation.CustomControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Width="300" Height="300">
     <StackPanel>
-        <TextBlock x:Name="current">Current</TextBlock>
-        <cc:LineGraph x:Name="graph"/>
+        <TextBlock x:Name="current" FontSize="24" FontWeight="Bold" Foreground="White">Current</TextBlock>
+        <cc:LineGraph x:Name="graph" Padding="10"/>
     </StackPanel>
 </UserControl>

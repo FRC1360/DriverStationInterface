@@ -9,7 +9,7 @@
                 <ControlTemplate TargetType="{x:Type local:LineGraph}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
                         <Viewbox StretchDirection="Both" Stretch="Uniform">
                             <Path Data="{TemplateBinding Geometry}" Stroke="Blue">
                                 <Path.StrokeThickness>
