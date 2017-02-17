@@ -49,10 +49,10 @@ namespace Frc1360.DriverStation.RobotComm.Utilities
 
         public static string String1360(this byte[] a, int offset)
         {
-            int len = a.UInt16Big(offset);
-            if (a.Length - offset - 2 < len)
+            int len = a.UInt32Big(offset).Signed();
+            if (a.Length - offset - 4 < len)
                 throw new ArgumentOutOfRangeException("Too few bytes available after offset!");
-            return Encoding.UTF8.GetString(a, offset + 2, len);
+            return Encoding.UTF8.GetString(a, offset + 4, len);
         }
 
         public static byte[] String1360(this string s)
