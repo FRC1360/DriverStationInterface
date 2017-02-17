@@ -20,6 +20,8 @@ namespace Frc1360.DriverStation.Components.ConfigSelector
 
         public IEnumerable Options { get; private set; }
 
+        public int Index { get; private set; }
+
         public void Update(int selection) => SendCommand(1, selection);
 
         protected override void OnCommand(ushort id, byte[] data)
@@ -29,15 +31,16 @@ namespace Frc1360.DriverStation.Components.ConfigSelector
                 case 0:
                     IEnumerable generate()
                     {
-                        ushort count = data.UInt16Big(0);
-                        int off = 2;
+                        int count = data.UInt32Big(4).Signed();
+                        int off = 8;
                         for (int i = 0; i < count; ++i)
                         {
                             var s = data.String1360(off);
                             yield return s;
-                            off += s.Length;
+                            off += s.Length + 4;
                         }
                     }
+                    Index = data.UInt32Big(0).Signed();
                     Options = generate();
                     ewh.Set();
                     break;

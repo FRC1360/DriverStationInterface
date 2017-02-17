@@ -5,6 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Frc1360.DriverStation.Components.ConfigSelector"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Width="300">
+             d:DesignHeight="300" d:DesignWidth="300" MinWidth="200">
     <ComboBox x:Name="selector" SelectionChanged="Changed"/>
 </UserControl>

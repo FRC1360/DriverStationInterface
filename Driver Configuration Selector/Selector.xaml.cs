@@ -27,6 +27,7 @@ namespace Frc1360.DriverStation.Components.ConfigSelector
             this.controller = controller;
             InitializeComponent();
             selector.ItemsSource = controller.Options;
+            selector.SelectedIndex = controller.Index;
         }
 
         private void Changed(object sender, SelectionChangedEventArgs e)

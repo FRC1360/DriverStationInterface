@@ -23,6 +23,7 @@ namespace Frc1360.DriverStation.Components.ConfigSelector
         public Task InitializeAsync(Connection connection) => Task.Run(() =>
         {
             Controller = new ConfigController(connection, 3);
+            Application.Current.Dispatcher.Invoke(() => selector = new Selector(Controller));
         });
     }
 }
