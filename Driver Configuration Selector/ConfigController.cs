@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using System.Threading;
 using Frc1360.DriverStation.RobotComm;
 using Frc1360.DriverStation.RobotComm.Utilities;
